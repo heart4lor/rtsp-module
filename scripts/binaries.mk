@@ -19,6 +19,7 @@ WORKDIR /s
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . ./
+WORKDIR /s/audio
 
 ENV VERSION $(shell git describe --tags)
 ENV CGO_ENABLED 0
