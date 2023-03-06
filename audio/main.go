@@ -61,9 +61,6 @@ func subscribe(c *gin.Context) {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"msg": "操作不合法，请检查"})
 		return
 	}
-	if subscribeRequest.NetworkMode == "local" {
-		subscribeRequest.RtspServer = "localhost"
-	}
 	rtspUrl := "rtsp://" + subscribeRequest.RtspServer + ":8554/audio/" + subscribeRequest.Username
 	// ffplay rtsp://hk1.sunyongfei.cn:8554/audio/syf
 	subscribeCommand := exec.Command("ffplay", rtspUrl)
